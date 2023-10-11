@@ -1,0 +1,73 @@
+CRITICAL - 2023-09-29 00:46:27 --> There is no data to insert.
+in SYSTEMPATH/BaseModel.php on line 1724.
+ 1 SYSTEMPATH/BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset()
+ 2 SYSTEMPATH/BaseModel.php(748): CodeIgniter\BaseModel->transformDataToArray()
+ 3 SYSTEMPATH/Model.php(715): CodeIgniter\BaseModel->insert()
+ 4 APPPATH/Controllers/Home.php(35): CodeIgniter\Model->insert()
+ 5 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 00:47:17 --> Allowed fields must be specified for model: "App\Models\ModelBuku"
+in SYSTEMPATH/Model.php on line 736.
+ 1 SYSTEMPATH/Model.php(736): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields()
+ 2 SYSTEMPATH/BaseModel.php(763): CodeIgniter\Model->doProtectFieldsForInsert()
+ 3 SYSTEMPATH/Model.php(715): CodeIgniter\BaseModel->insert()
+ 4 APPPATH/Controllers/Home.php(35): CodeIgniter\Model->insert()
+ 5 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 01:42:56 --> Object of class DateTime could not be converted to string
+in SYSTEMPATH/Database/Query.php on line 333.
+ 1 SYSTEMPATH/Database/Query.php(333): strtr()
+ 2 SYSTEMPATH/Database/Query.php(308): CodeIgniter\Database\Query->matchNamedBinds()
+ 3 SYSTEMPATH/Database/Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH/Database/BaseConnection.php(606): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH/Database/BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query()
+ 6 SYSTEMPATH/Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 7 SYSTEMPATH/BaseModel.php(788): CodeIgniter\Model->doInsert()
+ 8 SYSTEMPATH/Model.php(715): CodeIgniter\BaseModel->insert()
+ 9 APPPATH/Controllers/Home.php(35): CodeIgniter\Model->insert()
+10 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+11 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+13 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 06:56:41 --> Array to string conversion
+in APPPATH/Controllers/Home.php on line 41.
+ 1 APPPATH/Controllers/Home.php(41): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 07:00:23 --> mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, UserEntity given
+in SYSTEMPATH/Database/MySQLi/Result.php on line 154.
+ 1 SYSTEMPATH/Database/MySQLi/Result.php(154): mysqli_result->fetch_object()
+ 2 SYSTEMPATH/Database/BaseResult.php(159): CodeIgniter\Database\MySQLi\Result->fetchObject()
+ 3 SYSTEMPATH/Database/BaseResult.php(114): CodeIgniter\Database\BaseResult->getCustomResultObject()
+ 4 APPPATH/Models/UserModel.php(71): CodeIgniter\Database\BaseResult->getResult()
+ 5 APPPATH/Controllers/Home.php(41): App\Models\UserModel->ass()
+ 6 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 07:02:05 --> Array to string conversion
+in APPPATH/Controllers/Home.php on line 41.
+ 1 APPPATH/Controllers/Home.php(41): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-29 07:21:56 --> Call to a member function getAlamat() on array
+in APPPATH/Controllers/Home.php on line 43.
+ 1 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 2 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')

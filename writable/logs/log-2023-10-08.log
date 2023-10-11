@@ -1,0 +1,62 @@
+CRITICAL - 2023-10-08 03:15:57 --> syntax error, unexpected token "}", expecting ";"
+in APPPATH/Controllers/User/Register.php on line 61.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile()
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass()
+ 4 SYSTEMPATH/CodeIgniter.php(877): class_exists()
+ 5 SYSTEMPATH/CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-10-08 05:07:27 --> App\Entities\UserEntity::createObject(): Argument #1 ($nama) must be of type string, null given, called in /home/haslam/Documents/developmentTraining/training-php/perpustakaan/app/Controllers/User/Register.php on line 68
+in APPPATH/Entities/UserEntity.php on line 48.
+ 1 APPPATH/Controllers/User/Register.php(68): App\Entities\UserEntity->createObject()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\User\Register->register()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(78): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-10-08 05:08:38 --> App\Entities\UserEntity::createObject(): Argument #1 ($nama) must be of type string, null given, called in /home/haslam/Documents/developmentTraining/training-php/perpustakaan/app/Controllers/User/Register.php on line 68
+in APPPATH/Entities/UserEntity.php on line 48.
+ 1 APPPATH/Controllers/User/Register.php(68): App\Entities\UserEntity->createObject()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\User\Register->register()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-10-08 05:12:09 --> Invalid file: "App\Views\Template\CoreTemplate.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/View/View.php(467): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/RegisterForm.php(19): CodeIgniter\View\View->include()
+ 4 SYSTEMPATH/View/View.php(226): include('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/app/Views/RegisterForm.php')
+ 5 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1188): CodeIgniter\View\View->render()
+ 7 APPPATH/Controllers/User/UserView.php(10): view()
+ 8 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\User\UserView->registerform()
+ 9 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-10-08 05:15:06 --> Invalid file: "CoreTemplate.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/View/View.php(467): CodeIgniter\View\View->render()
+ 3 APPPATH/Views/RegisterForm.php(19): CodeIgniter\View\View->include()
+ 4 SYSTEMPATH/View/View.php(226): include('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/app/Views/RegisterForm.php')
+ 5 SYSTEMPATH/View/View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1188): CodeIgniter\View\View->render()
+ 7 APPPATH/Controllers/User/UserView.php(10): view()
+ 8 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\User\UserView->registerform()
+ 9 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-10-08 06:49:32 --> Array to string conversion
+in APPPATH/Controllers/User/Register.php on line 74.
+ 1 APPPATH/Controllers/User/Register.php(74): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\User\Register->register()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')

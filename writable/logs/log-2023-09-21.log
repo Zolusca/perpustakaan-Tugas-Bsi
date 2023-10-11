@@ -1,0 +1,32 @@
+CRITICAL - 2023-09-21 10:53:49 --> Undefined property: App\Controllers\Home::$perser
+in APPPATH/Controllers/Home.php on line 16.
+ 1 APPPATH/Controllers/Home.php(16): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-21 10:53:54 --> Undefined property: App\Controllers\Home::$perser
+in APPPATH/Controllers/Home.php on line 16.
+ 1 APPPATH/Controllers/Home.php(16): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-21 10:54:00 --> Undefined property: App\Controllers\Home::$perser
+in APPPATH/Controllers/Home.php on line 16.
+ 1 APPPATH/Controllers/Home.php(16): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')
+CRITICAL - 2023-09-21 10:54:29 --> Undefined property: App\Controllers\Home::$perser
+in APPPATH/Controllers/Home.php on line 16.
+ 1 APPPATH/Controllers/Home.php(16): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(919): App\Controllers\Home->index()
+ 3 SYSTEMPATH/CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/home/haslam/Documents/developmentTraining/training-php/perpustakaan/public/index.php')

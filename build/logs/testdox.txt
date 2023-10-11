@@ -1,0 +1,3 @@
+Booking Detail Model (App\Models\BookingDetailModel)
+ [x] Insert data success with data set #0
+
