@@ -1,0 +1,50 @@
+.data-booking{
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+span{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+table{
+    border-collapse: collapse;
+}
+td,th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+tfoot tr td{
+    border: none;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+tfoot input[type="submit"]{
+    padding: 3px;
+}
+tbody input[type="submit"]{
+    border-radius: 5px;
+    padding: 3px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background: #24b3b3;
+}
+tbody tr td form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+tbody input[type="submit"]:hover{
+    background: #C70039;
+}

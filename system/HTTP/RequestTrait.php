@@ -207,7 +207,7 @@ trait RequestTrait
      */
     public function getEnv($index = null, $filter = null, $flags = null)
     {
-        return $this->fetchGlobal('.env', $index, $filter, $flags);
+        return $this->fetchGlobal('env', $index, $filter, $flags);
     }
 
     /**

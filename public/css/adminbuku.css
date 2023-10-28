@@ -1,0 +1,70 @@
+.core{
+    display: flex;
+    flex-direction: row;
+}
+.data-buku{
+    margin-top: 90px;
+    margin-left: 50px;
+}
+.form-tambah-buku {
+    grid-area: form;
+    margin-top: 90px;
+    margin-left: 40px;
+    background-color: #24b3b3;
+    border-radius: 10px;
+    width: 9cm;
+    height: 11.8cm;
+    text-align: center;
+}
+input[type="text"]{
+    width: 5cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="number"]{
+    width: 5cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="submit"]{
+    width: 2cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+option{
+    width: 2cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.form-tambah-buku span{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+td{
+    text-align: left;
+    padding: 8px;
+    color: white;
+    font-weight: 500;
+}
+.data-buku table{
+    border-collapse: collapse;
+    background-color: #24b3b3;
+}
+.data-buku table thead td{
+    background-color: #4b9898;
+}
+.data-buku td, .data-buku th {
+    border: 1px solid #fafafa;
+    padding: 8px;
+}
+.data-buku tr:hover {
+    background-color: #5590ad;
+}

@@ -60,6 +60,7 @@ class Services extends BaseService
                 self::$databasePool[$index] = $databaseConnection;
 
                 self::$logger->debug("database created array databasePool -> " . count(self::$databasePool));
+                self::$logger->debug(WRITEPATH);
 
                 // return baseConnection
                 return $databaseConnection;

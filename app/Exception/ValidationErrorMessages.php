@@ -4,14 +4,14 @@ namespace App\Exception;
 
 class ValidationErrorMessages extends \RuntimeException
 {
-    private object $dataInformation;
+    private $dataInformation;
     public function __construct(string $messageException, $dataInformation=null)
     {
         parent::__construct($messageException);
 
         $this->dataInformation  =   $dataInformation;
     }
-    public function getDataInformation(): object
+    public function getDataInformation()
     {
         return $this->dataInformation;
     }

@@ -81,7 +81,7 @@ if (is_file(COMPOSER_PATH)) {
     require_once COMPOSER_PATH;
 }
 
-// Load environment settings from ..env files into $_SERVER and $_ENV
+// Load environment settings from .env files into $_SERVER and $_ENV
 require_once SYSTEMPATH . 'Config/DotEnv.php';
 
 $env = new DotEnv(ROOTPATH);

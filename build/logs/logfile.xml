@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests/ModelTest/SuccessTest" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.015792">
-    <testsuite name="App\Models\BookingDetailModelTest" file="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests/ModelTest/SuccessTest/BookingDetailModelTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.015792">
-      <testsuite name="App\Models\BookingDetailModelTest::testInsertDataSuccess" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.015792">
-        <testcase name="testInsertDataSuccess with data set #0" file="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests/ModelTest/SuccessTest/BookingDetailModelTest.php" line="41" class="App\Models\BookingDetailModelTest" classname="App.Models.BookingDetailModelTest" assertions="0" time="0.015792"/>
-      </testsuite>
+  <testsuite name="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.066066">
+    <testsuite name="UjiCoba" file="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests/UjiCoba.php" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.066066">
+      <testcase name="testkok" file="/home/haslam/Documents/developmentTraining/training-php/perpustakaan/tests/UjiCoba.php" line="14" class="UjiCoba" classname="UjiCoba" assertions="0" time="0.066066"/>
     </testsuite>
   </testsuite>
 </testsuites>

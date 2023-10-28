@@ -1,0 +1,28 @@
+.container-detail-buku{
+    margin-top: 80px;
+    margin-bottom: 30px;
+    /*border: 1px solid;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.data-detail-buku{
+    border: 1px;
+    padding: 10px;
+    border-radius: 13px;
+    width: 9.5cm;
+    height:auto;
+    background-color: #24b3b3;
+    color: white;
+}
+table{
+    margin-left: 15px;
+}
+td{
+    padding: 2px;
+}
+img{
+    width: 230px;
+    height: 250px;
+    margin-left: 15%;
+}

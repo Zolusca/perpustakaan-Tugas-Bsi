@@ -1,7 +1,7 @@
 <?php
 namespace App\Libraries;
-use App\Entity\User;
 use Monolog\Logger;
+use function PHPUnit\Framework\isEmpty;
 
 class LoggerCreations
 {
@@ -14,8 +14,11 @@ class LoggerCreations
     public static function LoggerCreations(string $class): Logger
     {
         $logger = new Logger(name: $class);
+
         $logger->pushHandler(new \Monolog\Handler\StreamHandler("php://stderr"));
+        $logger->pushHandler(new \Monolog\Handler\StreamHandler(WRITEPATH."logsApp/logapp.log"));
 
         return $logger;
     }
+
 }

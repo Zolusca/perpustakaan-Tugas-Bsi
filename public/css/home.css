@@ -1,71 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-*{
-    font-family: 'Nunito', sans-serif;
+html, body {
+    font-family: "Montserrat", sans-serif;
+    background-color: aliceblue;
+}
+
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
-.container {  
-  height: 100vh;
-  border: 1px solid;
-
-
-  display: grid;
-  grid-template-columns: 0.4fr 2.7fr 0.4fr;
-  grid-template-rows: 0.4fr 0.9fr 2fr 0.8fr;
-  grid-auto-columns: 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "header-nav header-nav header-nav"
-    "judul judul judul"
-    "konten konten konten"
-    "footer footer footer";
-}
-
-
-/**     Media query     **/
-@media screen and (max-width: 767px) {
-  .container {  
-    height: 110vh;
-    border: 1px solid;
-  
-  
+.container {
     display: grid;
-    grid-template-columns: 0.4fr 2.7fr 0.4fr;
-    grid-template-rows: 0.2fr 1.1fr 2fr 0.8fr;
+    grid-template-columns: 0.2fr 2fr 0.2fr;
+    grid-template-rows: 1fr;
     grid-auto-columns: 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "header-nav header-nav header-nav"
-      "judul judul judul"
-      "konten konten konten"
-      "footer footer footer";
-  }
-  
+    "kiri-empty core kanan-empty";
+    min-height: 100vh;
+    background: #8fd9d4;
 }
 
-  /**     Media Query   **/
-  @media screen and (max-width:1346px){
-    .container {  
-      height: 110vh;
-      border: 1px solid;
-    
-    
-      display: grid;
-      grid-template-columns: 0.4fr 2.7fr 0.4fr;
-      grid-template-rows: 0.2fr 1.1fr 2fr 0.8fr;
-      grid-auto-columns: 1fr;
-      gap: 0px 0px;
-      grid-auto-flow: row;
-      grid-template-areas:
-        "header-nav header-nav header-nav"
-        "judul judul judul"
-        "konten konten konten"
-        "footer footer footer";
-    }
-  }
-  
+.kiri-empty { grid-area: kiri-empty; }
+
+.kanan-empty { grid-area: kanan-empty; }
 

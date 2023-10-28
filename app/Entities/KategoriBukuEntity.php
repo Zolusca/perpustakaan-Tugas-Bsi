@@ -22,7 +22,7 @@ class KategoriBukuEntity extends Entity
     /**
      * method pembuatan object KategoriBukuEntity
      * @param string $namaKategori
-     * @return $this object kategori buku entity
+     * @return $this object kategori userDashboard entity
      */
     public function createObject(string $namaKategori): static
     {

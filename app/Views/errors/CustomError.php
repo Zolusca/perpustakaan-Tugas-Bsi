@@ -7,6 +7,10 @@
 </head>
 
 <body>
-<h1>{cause}</h1>
+<h1><?php
+    if(isset($cause)){
+        echo $cause;
+    }
+    ?></h1>
 </body>
 </html>

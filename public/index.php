@@ -1,5 +1,4 @@
 <?php
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 // Check PHP version.
 $minPhpVersion = '8.1'; // If you update this, don't forget to update `spark`.
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
@@ -39,7 +38,7 @@ $paths = new Config\Paths();
 // Location of the framework bootstrap file.
 require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
 
-// Load environment settings from ..env files into $_SERVER and $_ENV
+// Load environment settings from .env files into $_SERVER and $_ENV
 require_once SYSTEMPATH . 'Config/DotEnv.php';
 (new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
 

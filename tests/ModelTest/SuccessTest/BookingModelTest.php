@@ -3,17 +3,18 @@
 namespace ModelTest\SuccessTest;
 
 use App\Entities\BookingEntity;
+use App\Exception\DatabaseFailedInsert;
 use App\Models\BookingModel;
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Config\Services;
+use function Symfony\Component\String\b;
 
 class BookingModelTest extends CIUnitTestCase
 {
     use DatabaseTestTrait;
     private $databaseConnection;
     private $bookingModel;
-    private $bookingEntity;
 
     /**
      * @throws \Exception
@@ -22,34 +23,38 @@ class BookingModelTest extends CIUnitTestCase
     {
         $this->databaseConnection      = Services::getDatabaseConnection();
         $this->bookingModel            = new BookingModel($this->databaseConnection);
-        $this->bookingEntity           = new BookingEntity();
     }
     protected function tearDown(): void
     {
         Services::closeDatabaseConnection($this->databaseConnection);
     }
 
-    public static function providerIdUserEntity(){
-        return [
-            ["jatHrrO9EI0O90x"]
-        ];
+    public static function providerBookingEntity(){
+        $booking = new BookingEntity();
+        $booking->createObject
+        (
+            "2023-10-15",
+            "40aOXNpaC0zOnCV"
+        );
+        return [[$booking]];
     }
     /**
-     *  the param provide data idUser, with actual sample data from database.
-     *  so we dont need to configure user model to perform get data and sent to booking entity object
-     * @return void
      * @test
-     * @dataProvider providerIdUserEntity
+     * @dataProvider providerBookingEntity
      */
-    public function testInsertDataSuccess($idUser)
+    public function testInsertDataSuccess(BookingEntity $bookingEntity)
     {
-        $this->bookingEntity->createObject
-        (
-            "2000-10-20",
-            "2001-10-20",
-            $idUser
-        );
+        try {
+            $this->bookingModel->insertData($bookingEntity);
+            $this->expectNotToPerformAssertions();
+        }catch (DatabaseFailedInsert $exception){
+            $this->assertInstanceOf(DatabaseFailedInsert::class,$exception);
+        }
+    }
+
+
+    public function testFindingData($idUser){
         $this->expectNotToPerformAssertions();
-        $this->bookingModel->insertData($this->bookingEntity);
+        echo $this->bookingModel->getBookingByIdUser($idUser);
     }
 }

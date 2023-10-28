@@ -1,0 +1,53 @@
+.card-buku{
+    margin-top: 90px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.data-buku{
+    font-size: 14px;
+    text-align: center;
+    background-color: #24b3b3;
+    margin-left: 15px;
+    border: 1px solid;
+    border-radius: 0 0 7px 7px;
+    width: 5.5cm;
+}
+table{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+}
+td{
+    text-align: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+td > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+td > a:hover{
+    color: #0c5460;
+}
+img{
+    width: inherit;
+    height: 5cm;
+}
+input[type="submit"]{
+    width: auto;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #fab53a;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover{
+    background-color: white;
+    color: #0c5460;
+}

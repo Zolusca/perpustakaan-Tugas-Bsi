@@ -15,7 +15,6 @@ use Monolog\Logger;
 
 class BookingDetailModel extends Model
 {
-    protected $DBGroup          = 'default';
     protected $table            = 'booking_detail';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = false;
@@ -35,32 +34,37 @@ class BookingDetailModel extends Model
     {
         parent::__construct($db);
 
-        $this->logger = LoggerCreations::LoggerCreations(KategoriBukuModel::class);
+        $this->logger = LoggerCreations::LoggerCreations(BookingDetailModel::class);
     }
 
 
     /**
-     * menambahkan data ke database
+     * menambahkan data ke database dengan BookingDetailEntity
+     *
+     *
      * @param BookingDetailEntity $bookingDetailEntity
      * @return void
+     * @throws DatabaseFailedInsert jika data pada bookingdetailentity ada yang bermasalah mungkin ketidak cocokan dengan table lain
      */
     public function insertData(BookingDetailEntity $bookingDetailEntity): void
     {
         try {
             // menambahkan data
             $this->insert($bookingDetailEntity);
-            $this->logger->info("success insert data ".$bookingDetailEntity);
+            $this->logger->info("--------> success insert data ".$bookingDetailEntity);
 
         }// catch error insert
         catch (\ReflectionException $e )
         {
-            $this->logger->error("--------error on insert method--------");
+            $this->logger->error("--------> error inserting data booking detail <--------");
             $this->logger->error($e->getMessage());
 
         }//catch data duplicate
         catch (DatabaseException $exception){
-            // pada database field table tidak ada yang unique jadi kesalahan duplicate tidak terjadi
-            // maka dari itu kita gunakan getMessage()
+
+            $this->logger->debug("--------> terdapat masalah dengan inserting data {$bookingDetailEntity} <--------");
+            $this->logger->debug($exception->getMessage());
+
             throw new DatabaseFailedInsert(
                 $exception->getMessage(),
                 ResponseInterface::HTTP_UNPROCESSABLE_ENTITY,
@@ -70,11 +74,15 @@ class BookingDetailModel extends Model
 
 
     /**
-     * mencari data booking detail dengan id booking
+     * mencari data di table booking detail dengan id booking
+     *
+     * method ini mencari 1 data booking detail dengan idBooking dan mengembalikan
+     * object yang datanya bisa diakses dengan attributes/datamap booking detail entity
      * @param string $idBooking
      * @return array|object
+     * @throws DatabaseExceptionNotFound
      */
-    public function getBookingDetailByIdBooking(string $idBooking): array|object
+    public function getDataBookingDetailByIdBooking(string $idBooking): array|object
     {
         // mendapatkan data dari database, Note : ini menghasilkan Array object
         $result = $this->where("id_booking",$idBooking)->find();
@@ -82,7 +90,10 @@ class BookingDetailModel extends Model
         if($result != null){
             // mendapatkan object data dari array object
             return $result[0];
-        }else{
+        }
+        else{
+            $this->logger->debug("Data tidak ditemukan Booking detail dengan id booking ".$idBooking);
+
             throw new DatabaseExceptionNotFound
             (
                 "booking detail tidak ditemukan",
@@ -91,4 +102,6 @@ class BookingDetailModel extends Model
             );
         }
     }
+
+
 }

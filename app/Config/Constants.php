@@ -93,6 +93,3 @@ define('EVENT_PRIORITY_NORMAL', 100);
  */
 define('EVENT_PRIORITY_HIGH', 10);
 
-$server_name = !empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'localhost:8080';
-$base = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $server_name . '/';
-defined('BASE')||define('BASE',$base);

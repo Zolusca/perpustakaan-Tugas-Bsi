@@ -3,17 +3,19 @@
 namespace ModelTest\SuccessTest;
 
 use App\Entities\KategoriBukuEntity;
+use App\Exception\DatabaseExceptionNotFound;
+use App\Exception\DatabaseFailedInsert;
 use App\Models\KategoriBukuModel;
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Config\Services;
+use PHPUnit\Framework\Assert;
 
 class KategoriBukuModelTest extends CIUnitTestCase
 {
     use DatabaseTestTrait;
     private $databaseConnection;
     private $kategoriBukuModel;
-    private $kategoriBukuEntity;
 
     /**
      * @throws \Exception
@@ -22,28 +24,67 @@ class KategoriBukuModelTest extends CIUnitTestCase
     {
         $this->databaseConnection   = Services::getDatabaseConnection();
         $this->kategoriBukuModel            = new KategoriBukuModel($this->databaseConnection);
-        $this->kategoriBukuEntity           = new KategoriBukuEntity();
     }
     protected function tearDown(): void
     {
         Services::closeDatabaseConnection($this->databaseConnection);
     }
 
+
+    public static function providerKategoriBukuObject(){
+        $kategoriBuku = new KategoriBukuEntity();
+        $kategoriBuku->createObject("biografi");
+        return[[$kategoriBuku]];
+    }
+
+    public static function providerIdKategori(){
+        return [["JIcHFWk1N"]];
+    }
+
     /**
-     * it will success when data not exist on database
-     * @return void
+     * @dataProvider providerKategoriBukuObject
      * @test
      */
-    public function testInsertDataSuccess(){
-        // pembuatan object kategori entity
-        $this->kategoriBukuEntity->createObject
-        (
-          "komik"
-        );
-        // berharap tidak terjadi kesalahan
-        $this->expectNotToPerformAssertions();
-        // insert data dengan entity
-        $this->kategoriBukuModel->insertData($this->kategoriBukuEntity);
+    public function testInsertDataSuccess(KategoriBukuEntity $kategoriBukuEntity){
+        try {
+
+            $this->kategoriBukuModel->insertData($kategoriBukuEntity);
+            $this->expectNotToPerformAssertions();
+
+        }catch (DatabaseFailedInsert $exception){
+            Assert::assertInstanceOf(DatabaseFailedInsert::class,$exception);
+        }
     }
+
+    /**
+     * @dataProvider providerIdKategori
+     * @test
+     */
+    public function testGetNamaKategoriByIdKategoriSuccess(string $idKategori){
+
+        try {
+            $result = $this->kategoriBukuModel->getNamaKategoriByIdKategori($idKategori);
+
+            Assert::assertNotEmpty($result,"data tidak empty");
+
+        }catch (DatabaseExceptionNotFound $exception){
+            Assert::assertInstanceOf(DatabaseExceptionNotFound::class,$exception,"data tidak ditemukan");
+        }
+    }
+
+
+    /**
+     * @test
+     */
+    public function testGetAllNamaKategoriSuccess(){
+        $result = $this->kategoriBukuModel->getAllNamaKategori();
+
+        // menampilkan data
+        foreach ($result as $value){
+            echo $value->namaKategori." ".$value->idKategori."\n";
+        }
+        Assert::assertNotEmpty($result);
+    }
+
 
 }

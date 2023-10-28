@@ -30,12 +30,12 @@ class BookingDetailModelTest extends TestCase
 
     public static function providerIdBookingIdBuku(){
         return [
-            ["8ktFgijsj6rmfY9","ljJWX3wrLiE0aCa"]
+            ["96V2NgNb85Ic6jh","ljJWX3wrLiE0aCa"]
         ];
     }
     /**
-     *  the param provide data idbooking and idbuku, with actual sample data from database.
-     *  so we dont need to configure booking model and buku model to perform get data and sent to booking detail entity object
+     *  the param provide data id_booking and id_buku, with actual sample data from database.
+     *  so we don't need to configure booking model and userDashboard model to perform get data and sent to booking detail entity object
      * @return void
      * @test
      * @dataProvider providerIdBookingIdBuku

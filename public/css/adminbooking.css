@@ -1,0 +1,81 @@
+.konten{
+    margin-top: 90px;
+}
+.form-email{
+    border: none;
+    width: 9.5cm;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background-color: #24b3b3;
+    margin-left: 20px;
+}
+.form-email span{
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+.form-email table{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.form-email td{
+    color: white;
+    font-weight: bolder;
+    font-size: 15px;
+    padding-right: 10px;
+    text-align: left;
+}
+input[type="submit"]{
+    font-size: 15px;
+    padding: 2px 10px;
+    font-weight: bolder;
+    border-radius: 3px;
+    border: none;
+}
+input[type="email"]{
+    width: 4.4cm;
+    height: 1.7rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="number"]{
+    width: 4cm;
+    height: 1.7rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="date"]{
+    width: 3.4cm;
+    height: 1.5rem;
+    font-size: 14px;
+    border-radius: 6px;
+}
+.datauserbooking{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.datauserbooking table{
+   border-collapse: collapse;
+}
+.datauserbooking table thead{
+    background-color: #0f6674;
+    text-align: center;
+}
+.datauserbooking table tr{
+    border: 1px solid;
+}
+.datauserbooking table thead td{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+}
+.datauserbooking table tbody td{
+    border: 1px solid;
+    padding: 5px;
+}

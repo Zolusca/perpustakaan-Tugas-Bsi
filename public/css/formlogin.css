@@ -1,0 +1,77 @@
+.image{
+    grid-area: image;
+    width: 500px;
+    height: 410px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.core-konten-form{
+    margin-left: 10px;
+}
+.core {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "form image";
+    grid-area: core;
+    background: #79d1cc;
+}
+.form {
+    grid-area: form;
+    margin-top: 200px;
+    margin-left: 40px;
+    background-color: #24b3b3;
+    border-radius: 10px;
+    width: 9cm;
+    height: 6.5cm;
+    text-align: center;
+}
+.core-konten-form{
+    margin-top: 20px;
+}
+input[type="email"]{
+    width: 5cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="password"]{
+    width: 5cm;
+    height: 2rem;
+    font-size: 15px;
+    border-radius: 7px;
+}
+input[type="submit"]{
+    width: auto;
+    height: 2rem;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #fab53a;
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover{
+    background-color: #fab53a;
+    color: white;
+}
+.form-span{
+    padding-top: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+td{
+    text-align: left;
+    padding: 8px;
+    color: white;
+    font-weight: 500;
+}
+

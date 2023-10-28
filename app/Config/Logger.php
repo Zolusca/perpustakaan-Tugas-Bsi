@@ -81,16 +81,21 @@ class Logger extends BaseConfig
          */
         FileHandler::class => [
             // The log levels that this handler will handle.
-            'handles' => [
-                'critical',
-                'alert',
-                'emergency',
-                'debug',
-                'error',
-                'info',
-                'notice',
-                'warning',
-            ],
+//            'handles' => [
+//                'critical',
+//                'alert',
+//                'emergency',
+//                'debug',
+//                'error',
+//                'info',
+//                'notice',
+//                'warning',
+//            ],
+//        'handles'=>[
+//          'debug',
+//          'info',
+//          'error'
+//        ],
 
             /*
              * The default filename extension for log files.
@@ -107,7 +112,7 @@ class Logger extends BaseConfig
              * IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
              * integer notation (i.e. 0700, 0644, etc.)
              */
-            'filePermissions' => 0644,
+            'filePermissions' => 0777,
 
             /*
              * Logging Directory Path

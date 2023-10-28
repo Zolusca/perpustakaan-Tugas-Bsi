@@ -29,19 +29,20 @@ class BookingEntity extends Entity
     ////////////////////////// METHOD /////////////////////////////////////
 
     /**
-     * method untuk membuat object BookingEntity
+     * method untuk membuat object BookingEntity, id booking dibuat otomatis
      * @param string $tglBooking
-     * @param string $batasAmbil
      * @param string $idUser from UserEntity
      * @return $this Object User Entity
      */
-    public function createObject(string $tglBooking, string $batasAmbil, string $idUser): static
+    public function createObject(string $tglBooking, string $idUser): static
     {
         $this->logger    = LoggerCreations::LoggerCreations(BookingEntity::class);
+        $tanggal_hari_ini = date('Y-m-d');
+        $tanggal_ambil   = date('Y-m-d', strtotime($tanggal_hari_ini . ' +5 days'));
 
         $this->attributes["id_booking"]     = RandomString::random_string(15);
         $this->attributes["tgl_booking"]    = $this->setTanggalInput($tglBooking);
-        $this->attributes["batas_ambil"]    = $this->setTanggalInput($batasAmbil);
+        $this->attributes["batas_ambil"]    = $this->setTanggalInput($tanggal_ambil);
         $this->attributes["id_user"]        = $idUser;
 
         return $this;
@@ -55,7 +56,7 @@ class BookingEntity extends Entity
 
         } catch (\Exception $e) {
             $this->logger->error("error when setting date time on setTanggalInput");
-            $this->logger->error($e->getTraceAsString());
+            $this->logger->error($e->getMessage());
             return null;
         }
     }

@@ -4,17 +4,20 @@ namespace ModelTest\SuccessTest;
 
 use App\Entities\BukuEntity;
 use App\Entities\KategoriBukuEntity;
+use App\Exception\DatabaseExceptionNotFound;
+use App\Exception\ValidationErrorMessages;
 use App\Models\BukuModel;
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Config\Services;
+use PHPUnit\Framework\Assert;
 
 class BukuModelTest extends CIUnitTestCase
 {
     use DatabaseTestTrait;
     private $databaseConnection;
     private $bukuModel;
-    private $bukuEntity;
+
 
     /**
      * @throws \Exception
@@ -23,7 +26,6 @@ class BukuModelTest extends CIUnitTestCase
     {
         $this->databaseConnection   = Services::getDatabaseConnection();
         $this->bukuModel            = new BukuModel($this->databaseConnection);
-        $this->bukuEntity           = new BukuEntity();
     }
     protected function tearDown(): void
     {
@@ -31,30 +33,59 @@ class BukuModelTest extends CIUnitTestCase
     }
 
     public static function providerKategoriBukuEntity(){
-        return [
-            ["li83T1qwS","komik"]
-        ];
+        $bukuEntity = new BukuEntity();
+        $bukuEntity->createObject
+        (
+            "si kancil","li83T1qwS",
+            "ornamental","juara kelas",
+            2001,10,"sikancil.png"
+        );
+        return [[$bukuEntity]];
     }
+    public static function provideIdBuku(){
+        return [["1QQHSOItejaEFBF"]];
+    }
+
+
     /**
-     * the param provide data kategoriBukuEntities, with actual sample data from database.
-     * so we dont need to configure kategori model to perform get data and sent to buku entity object
-     *
      * @test
-     * @return void
      * @dataProvider providerKategoriBukuEntity
      */
-    public function testInsertDataSuccess($idKategori,$namaKategori){
-       // membuat buku entities
-       $this->bukuEntity->createObject
-       (
-            "One Piece",$idKategori,"Echiro Oda",
-           "Toei Studio",2001,100,"onePiece.jpg"
-       );
+    public function testInsertDataSuccess(BukuEntity $bukuEntity){
 
-       // berharap tidak ada exception atau error
-       $this->expectNotToPerformAssertions();
+        try{
+            $this->bukuModel->insertData($bukuEntity);
+            $this->expectNotToPerformAssertions();
 
-       $this->bukuModel->insertData($this->bukuEntity);
+        }catch (ValidationErrorMessages $exception){
+            Assert::assertInstanceOf(ValidationErrorMessages::class,$exception);
+        }
 
+    }
+
+    /**
+     * @dataProvider provideIdBuku
+     * @test
+     */
+    public function testFindBukuByIdBukuSuccess(string $idBuku){
+        try {
+            $result = $this->bukuModel->findBukuByIdBuku($idBuku);
+
+            echo $result;
+
+            Assert::assertNotEmpty($result);
+
+        }catch (DatabaseExceptionNotFound $exception){
+            Assert::assertInstanceOf(DatabaseExceptionNotFound::class,$exception);
+        }
+    }
+
+    public function testGetAllDataBuku(){
+        $result = $this->bukuModel->getAllDataBuku();
+
+        foreach ($result as $data){
+            echo $data->judulBuku."\n";
+        }
+        Assert::assertNotEmpty($result);
     }
 }

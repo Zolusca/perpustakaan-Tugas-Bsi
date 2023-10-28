@@ -2,58 +2,24 @@
 
 namespace App\Controllers\User;
 
-use App\Controllers\BaseController;
-use App\Entities\UserEntity;
-use App\Exception\DatabaseConnectionFull;
 use App\Exception\DatabaseFailedInsert;
+use App\Exception\ValidationErrorMessages;
 use App\Libraries\RandomString;
-use App\Models\UserModel;
-use CodeIgniter\Database\BaseConnection;
-use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\HTTP\Response;
-use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\View\Parser;
 use Config\Services;
 
-class Register extends BaseController
+class Register extends User
 {
-    private BaseConnection $databaseConnection;
-    private ResponseInterface $httpClientResponses;
-    private Parser $parserValue;
-    private UserEntity $userEntity;
-    private UserModel $userModel;
-
     public function __construct()
     {
-        // setting up field
-        $this->userEntity           =   new UserEntity();
-        $this->httpClientResponses  =   Services::response();
-        $this->parserValue          =   Services::parser();
-
-        try{
-            $this->databaseConnection = Services::getDatabaseConnection();
-            $this->userModel          = new UserModel($this->databaseConnection);
-
-        }catch (DatabaseConnectionFull|DatabaseException $exception)
-        {
-            $dataParser =
-                [
-                  "cause"=>$exception->getMessage()
-                ];
-
-            // sent response for user, database connection problem
-            $this->httpClientResponses
-                ->setStatusCode(Response::HTTP_SERVICE_UNAVAILABLE)
-                ->setBody($this->parserValue->setData($dataParser)->render("errors/CustomError"))
-                ->send();
-            exit();
-        }
-
+        parent::__construct();
     }
 
-
     /**
-     * method registrasi user
+     * method registrasi user, mengambil data input user lalu mengubah nama file gambar.
+     * selanjutnya dilakukan insert data.
+     * penanganan throw yang terjadi adalah insert gagal karena data sudah ada
+     * dan kesalahan validasi input user
      */
     public function register()
     {
@@ -64,8 +30,9 @@ class Register extends BaseController
         $alamat     =   $this->request->getVar("alamat");
         $gambar     =   $this->request->getFile("gambar");
 
-        $namaGambar = RandomString::random_string(9).".".$gambar->getClientExtension();
 
+        // mempersiapkan nama untuk file gambar
+        $namaGambar = RandomString::random_string(9).".".$gambar->getClientExtension();
 
         try{
             // creating user entity object with data input
@@ -78,52 +45,48 @@ class Register extends BaseController
             // insert data
             $this->userModel->insertData($this->userEntity);
 
-            // cek error validasi
-            if(count($this->userModel->errors())>1)
-            {
-                // change name of data array value from [0] to ["dataError"]
-                $dataErrorValidation["dataError"] = $this->userModel->errors();
-
-                // add data parser and merge the array of error
-                $dataParser["data"] =
-                    [
-                        $dataErrorValidation
-                    ]  ;
-
-                // return back form register and view data error
-//                return view("user/RegisterForm",$dataParser);
-                $this->httpClientResponses
-                    ->setStatusCode(Response::HTTP_BAD_REQUEST)
-                    ->setBody(view("user/RegisterForm",$dataParser))
-                    ->send();
-
-            }else
-            {
-                // sent response and save image when not any error inserting data
-                $this->httpClientResponses
-                    ->setStatusCode(Response::HTTP_OK)
-                    ->setBody(view("welcome_message"))
-                    ->send();
-
-                $gambar->store("userprofile",$namaGambar);
-            }
+            // memindahkan gambar ke public/userprofilepicture dengan nama random
+            $gambar->move(FCPATH."/userprofilepicture/",$gambar);
 
         }
         // catch exception when data can't insert
-        catch (DatabaseFailedInsert $exception) {
+        catch (DatabaseFailedInsert $exception)
+        {
           //   get value exception
             $dataParser =
                 [
                     "cause"=>$exception->getMessage()
                 ];
 
-            // sent body a html with parser, and sent a exception
+            // sent body a html with parser, and sent a exception. with parser library
             $this->httpClientResponses
                 ->setStatusCode(Response::HTTP_SERVICE_UNAVAILABLE)
-                ->setBody($this->parserValue->setData($dataParser)->render("errors/CustomError"))
+                ->setBody(view("errors/CustomError",$dataParser))
+                ->send();
+
+        }
+        // catch validation exception cause user input not valid
+        catch (ValidationErrorMessages $exception)
+        {
+            // ambil data error message validation
+            $messageValidation["dataError"]=$exception->getDataInformation();
+
+            $dataParser["data"] =
+                    [
+                        $messageValidation
+                    ]  ;
+
+            $this->httpClientResponses
+                ->setStatusCode(Response::HTTP_BAD_REQUEST)
+                ->setBody(view("register",$dataParser))
                 ->send();
         }
+        finally
+        {
+            Services::closeDatabaseConnection($this->databaseConnection);
+        }
 
+        return redirect()->to(base_url()."user/login");
     }
 
 }

@@ -83,7 +83,7 @@ trait FeatureTestTrait
      *
      * Example of use
      * withHeaders([
-     *  'Authorization' => 'Token'
+     *  'MyAuthorization' => 'Token'
      * ])
      *
      * @param array $headers Array of headers

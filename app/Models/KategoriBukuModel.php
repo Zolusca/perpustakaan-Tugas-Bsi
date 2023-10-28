@@ -14,7 +14,6 @@ use Monolog\Logger;
 
 class KategoriBukuModel extends Model
 {
-    protected $DBGroup          = 'default';
     protected $table            = 'kategori_buku';
     protected $primaryKey       = 'id_kategori';
     protected $useAutoIncrement = false;
@@ -52,10 +51,15 @@ class KategoriBukuModel extends Model
 
 
     /**
-     * menambahkan data ke database
+     * menambahkan 1 data ke table kategori_Buku
+     *
+     * method ini mencoba inserting data dengan di provide kategoriEntity object.
+     * method ini dapat mengakibatkan exception gagal insert data
+     * ---
+     * gunakan kategoriBukuEntity->createObject sebagai penyedia pembuatan object kategori buku
      * @param KategoriBukuEntity $kategoriBukuEntity
      * @return void
-     * @throws DatabaseFailedInsert insert failed data available on database
+     * @throws DatabaseFailedInsert --> insert failed data sudah ada di database
      */
     public function insertData(KategoriBukuEntity $kategoriBukuEntity): void
     {
@@ -71,9 +75,13 @@ class KategoriBukuModel extends Model
             $this->logger->error($e->getMessage());
 
         }//catch data duplicate
-        catch (DatabaseException $exception){
+        catch (DatabaseException $exception)
+        {
+            $this->logger->debug("-------------> duplicate entry Kategori Buku, failed Inserting data {$kategoriBukuEntity} <-------");
+            $this->logger->debug($exception->getMessage());
+
             throw new DatabaseFailedInsert(
-                "Failed Insert, kategori buku sudah ada",
+                "Failed Insert, kategori userDashboard sudah ada",
                 ResponseInterface::HTTP_UNPROCESSABLE_ENTITY,
                 $kategoriBukuEntity);
         }
@@ -81,25 +89,57 @@ class KategoriBukuModel extends Model
 
 
     /**
-     * mencari data kategori buku dengan nama kategori
-     * @param string $namaKategori
+     * mencari nama kategori data di table kategori_buku
+     *
+     * method ini akan mencari data dengan param idKategori, ini dapat digunakan untuk mendapatkan
+     * nama kategori dari table buku (di table buku terdapat id_kategori). method ini dapat
+     * menyebabkan exception DataExceptionNotFound
+     * @param string $idKategori
      * @return array|object object
+     * @throws DatabaseExceptionNotFound data dengan id kategori tidak ditemukan
      */
-    public function getKategoriByNamaKategori(string $namaKategori): array|object
+    public function getNamaKategoriByIdKategori(string $idKategori): array|object
     {
         // mendapatkan data dari database, Note : ini menghasilkan Array object
-        $result = $this->where("nama_kategori",$namaKategori)->find();
+        $result = $this->where("id_kategori",$idKategori)
+                        ->find();
 
         if($result != null){
             // mendapatkan object data dari array object
             return $result[0];
-        }else{
+
+        }else
+        {
+            $this->logger->debug("-------------> Kesalahan pada pencarian nama kategori buku <---------");
+            $this->logger->debug("tidak menemukan data dengan id kategori ".$idKategori);
+
             throw new DatabaseExceptionNotFound
             (
                 "kategori tidak ditemukan",
                 ResponseInterface::HTTP_NOT_FOUND,
-                $namaKategori
+                $idKategori
             );
         }
+    }
+
+    /**
+     * mendapatkan semua data table kategori buku
+     *
+     * method ini mengambil semua data yang ada di database dan
+     * mengembalikannya dalam bentuk array of object, gunakan for each
+     * dan attributes/data mapping kategori entity dari hasil kembalian method
+     *
+     * @return array mengembalikan array kosong jika data tidak ditemukan
+     */
+    public function getAllNamaKategori(): array
+    {
+        $queryResult = $this->findAll();
+
+        // check data array, if the array is empty return empty of array
+        if(count($queryResult)<1){
+            $this->logger->debug("---------> data table kategori buku kosong Buku <--------");
+
+        }
+        return $queryResult;
     }
 }
