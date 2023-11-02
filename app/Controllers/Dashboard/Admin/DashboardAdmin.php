@@ -3,6 +3,7 @@
 namespace App\Controllers\Dashboard\Admin;
 
 use App\Controllers\Dashboard\Dashboard;
+use App\Entities\Enum\StatusPinjam;
 use App\Exception\DatabaseExceptionNotFound;
 use App\Exception\ValidationErrorMessages;
 use App\Libraries\RandomString;
@@ -218,7 +219,50 @@ class DashboardAdmin extends Dashboard
             Services::closeDatabaseConnection($this->databaseConnection);
         }
     }
-    public function adminAksiUserKembalikanPinjam(){
 
+    /**
+     * @throws \ReflectionException
+     */
+    public function adminAksiUserKembalikanPinjam(){
+        $tanggalPengembalian      = $this->request->getVar(["tanggal"]);
+        $idBooking  = $this->request->getVar(["idbooking"]);
+        $idBuku     = $this->request->getVar(["idbuku"]);
+        $noPinjam   = $this->request->getVar(["nopinjam"]);
+
+        $arrayTanggalPengembalian      = $tanggalPengembalian["tanggal"];
+        $arrayIdBooking                = $idBooking["idbooking"];
+        $arrayIdBuku                   = $idBuku["idbuku"];
+        $arrayNoPinjam                 = $noPinjam['nopinjam'];
+
+        foreach ($arrayIdBuku as $index=>$value){
+
+            $this->pinjamModel->where('no_pinjam',$arrayNoPinjam[$index])
+                              ->set('status',StatusPinjam::DIKEMBALIKAN->value)
+                              ->set('tgl_pengembalian',$this->setTanggalInput($arrayTanggalPengembalian[$index]))
+                              ->update();
+
+            // Masalah pada hubungan database, on delete on cascade
+//            $this->bookingModel->where('id_booking',$arrayIdBooking[$index])->delete();
+
+            // Todo update pinjam pada buku model
+        }
+        // mengembalikan response
+        $this->httpClientResponses
+            ->setStatusCode(Response::HTTP_OK)
+            ->setBody(view("dashboard/adminlistuserpinjam",["dataResponse"=>"berhasil di update"]))
+            ->send();
     }
+
+    public function adminAksiLihatdaftarAnggota(){
+        return view(
+            "dashboard/admindaftaranggota",
+            [
+                "dataanggota"=>[
+                    "user"=>$this->userModel
+                                ->where('role_user','anggota')
+                                ->findAll(10)
+                ]
+            ]);
+    }
+
 }

@@ -113,4 +113,16 @@ class Dashboard extends BaseController
         }
 
     }
+    public function setTanggalInput(string $datetime): ?string
+    {
+        try {
+            $date = new \DateTime($datetime, new \DateTimeZone('Asia/Jakarta'));
+            return $date->format('Y-m-d');
+
+        } catch (\Exception $e) {
+            $this->logger->error("error when setting date time on setTanggalInput");
+            $this->logger->error($e->getMessage());
+            return null;
+        }
+    }
 }

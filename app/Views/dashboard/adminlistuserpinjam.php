@@ -21,25 +21,19 @@
             <li><a href="<?= base_url()."admin/dashboard/main"?>">Data Buku</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userbooking"?>">Data Booking</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userpeminjam"?>">Data Peminjam</a></li>
-            <li><a href="<?= base_url()."user/dashboard/buku/booking/list"?>">Daftar Anggota</a></li>
+            <li><a href="<?= base_url()."admin/dashboard/userlist"?>">Daftar Anggota</a></li>
         </ul>
     </nav>
 </header>
 
 
 <div class="container">
-
-    <?php if (isset($databuku)): ?>
+    <?php if (isset($dataResponse)): ?>
         <?php
 
-        // mengeceek apakah ada key "dataError"
-        if(array_key_exists("dataError",$databuku)){
+        echo "<script>alert('{$dataResponse}');</script>";
 
-            // menggabungkan semua array menjadi string
-            $jsAlertMessage = implode("\\n", $databuku["dataError"]);
-            echo "<script>alert('{$jsAlertMessage}');</script>";
 
-        }
         ?>
     <?php endif; ?>
 
@@ -65,7 +59,7 @@
 
             <div class="datauserbooking">
 
-                <form action="<?= base_url()."admin/dashboard/userambilbuku"?>" method="post">
+                <form action="<?= base_url()."admin/dashboard/userkembalikanbuku"?>" method="post">
                     <table>
                         <thead>
                         <tr>
@@ -95,7 +89,7 @@
                                     <td><?= $value->total_denda?></td>
                                     <td><input type="date"  name="tanggal[<?= $index ?>]" min="2023" ></td>
                                     <td>
-                                        <input type="hidden" name="iduser" value="<?= $value->id_user?>">
+                                        <input type="hidden" name="nopinjam[<?= $index?>]" value="<?= $value->no_pinjam?>">
                                         <input type="hidden" name="idbooking[<?= $index ?>]" value="<?= $value->id_booking ?>" >
                                         <input type="hidden" name="idbuku[<?= $index ?>]" value="<?= $value->id_buku ?>" >
                                         <input type="submit" value="Kirim" >

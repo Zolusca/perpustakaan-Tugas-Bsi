@@ -66,6 +66,21 @@ $routes->group('admin/dashboard',['filter'=>'authorization'],function ($routes){
         'userpeminjam',
         'Dashboard\Admin\DashboardAdmin::tampilanAdminPeminjam'
     );
+    $routes->get
+    (
+        'userlist',
+        'Dashboard\Admin\DashboardAdmin::adminAksiLihatdaftarAnggota'
+    );
+    $routes->get
+    (
+        'laporanlistuser',
+        'Dashboard\Admin\LaporanAdmin::laporanListUser'
+    );
+    $routes->get
+    (
+        'laporanpeminjam',
+        'Dashboard\Admin\LaporanAdmin::laporanListUserPeminjam'
+    );
     $routes->post
     (
         'tambahbuku',

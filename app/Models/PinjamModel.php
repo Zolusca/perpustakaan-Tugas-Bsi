@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Entities\Enum\StatusPinjam;
 use App\Entities\PinjamEntity;
 use App\Exception\DatabaseExceptionNotFound;
 use App\Exception\DatabaseFailedInsert;

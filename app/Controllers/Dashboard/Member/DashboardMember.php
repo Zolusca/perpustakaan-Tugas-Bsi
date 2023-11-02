@@ -306,7 +306,7 @@ class DashboardMember extends Dashboard
 
         // memproses pembuatan pdf
         $generatePdf = new GeneratePDF();
-        $generatePdf->createPdf($dataParser);
+        $generatePdf->createPdf($dataParser,'booking',"template/PdfOutput");
 
         return view("template/PdfOutput",$dataParser);
     }

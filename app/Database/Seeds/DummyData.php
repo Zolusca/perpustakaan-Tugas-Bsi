@@ -44,7 +44,7 @@ class DummyData extends Seeder
 
         $dataBuku1=[
             "id_buku"=>"xdXerV4ugXv5KKP",
-            "judul"=>"sangkuriang",
+            "judul_buku"=>"sangkuriang",
             "id_kategori"=>"kf91T3qoS",
             "pengarang"=>"tuk dalang",
             "penerbit"=>"robinson",
@@ -58,7 +58,7 @@ class DummyData extends Seeder
 
         $dataBuku2=[
             "id_buku"=>"lOO0rV4uvXv5KKP",
-            "judul"=>"one piece",
+            "judul_buku"=>"one piece",
             "id_kategori"=>"kf91T3qoS",
             "pengarang"=>"echiro oda",
             "penerbit"=>"toei studio",

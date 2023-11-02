@@ -14,11 +14,11 @@ class GeneratePDF
         $this->dompdf = new Dompdf();
     }
 
-    public function createPdf($dataParser){
+    public function createPdf($dataParser,$namaFile,$layoutHtml){
         $this->dompdf->setPaper('A4','landscape');
-        $this->dompdf->loadHtml(view("template/PdfOutput",$dataParser));
+        $this->dompdf->loadHtml(view($layoutHtml,$dataParser));
         $this->dompdf->render();
-        $this->dompdf->stream("kartu_booking.pdf");
+        $this->dompdf->stream($namaFile.".pdf");
     }
 
 }
