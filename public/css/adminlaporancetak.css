@@ -1,0 +1,10 @@
+.cetak-laporan{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.cetak-laporan ul li{
+    background-color: #0f6674;
+    border-radius: 2px;
+    padding: 4px;
+}

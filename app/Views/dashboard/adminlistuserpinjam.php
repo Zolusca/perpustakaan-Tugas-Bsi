@@ -22,6 +22,7 @@
             <li><a href="<?= base_url()."admin/dashboard/userbooking"?>">Data Booking</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userpeminjam"?>">Data Peminjam</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userlist"?>">Daftar Anggota</a></li>
+            <li><a href="<?= base_url()."admin/dashboard/admincetaklaporan"?>">Cetak Laporan </a></li>
         </ul>
     </nav>
 </header>

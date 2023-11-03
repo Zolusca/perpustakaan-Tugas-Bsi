@@ -73,6 +73,11 @@ $routes->group('admin/dashboard',['filter'=>'authorization'],function ($routes){
     );
     $routes->get
     (
+        'admincetaklaporan',
+        'Dashboard\Admin\LaporanAdmin::cetakLaporanView'
+    );
+    $routes->get
+    (
         'laporanlistuser',
         'Dashboard\Admin\LaporanAdmin::laporanListUser'
     );
@@ -80,6 +85,11 @@ $routes->group('admin/dashboard',['filter'=>'authorization'],function ($routes){
     (
         'laporanpeminjam',
         'Dashboard\Admin\LaporanAdmin::laporanListUserPeminjam'
+    );
+    $routes->get
+    (
+        'laporanbuku',
+        'Dashboard\Admin\LaporanAdmin::laporanDataBuku'
     );
     $routes->post
     (

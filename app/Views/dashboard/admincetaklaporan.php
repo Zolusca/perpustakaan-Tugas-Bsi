@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/homeheader.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/footerhome.css">
-    <link rel="stylesheet" href="/css/adminbuku.css">
+    <link rel="stylesheet" href="/css/adminlaporancetak.css">
     <title></title>
 </head>
 <body>
@@ -22,7 +22,7 @@
             <li><a href="<?= base_url()."admin/dashboard/userbooking"?>">Data Booking</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userpeminjam"?>">Data Peminjam</a></li>
             <li><a href="<?= base_url()."admin/dashboard/userlist"?>">Daftar Anggota</a></li>
-            <li><a href="<?= base_url()."admin/dashboard/admincetaklaporan"?>">Cetak Laporan </a></li>
+            <li><a href="<?= base_url()."admin/dashboard/laporanpeminjam"?>">Cetak Laporan </a></li>
         </ul>
     </nav>
 </header>
@@ -33,32 +33,13 @@
     <div class="kiri-empty"></div>
     <div class="kanan-empty"></div>
     <div class="core">
-
-        <div class="data-buku">
-            <table>
-                <thead>
-                <tr>
-                    <td>nama</td>
-                    <td>alamat</td>
-                    <td>email</td>
-                </tr>
-                </thead>
-
-                <tbody>
-
-                <?php if (isset($dataanggota)) :?>
-                    <?php foreach ($dataanggota["user"] as $valueBuku):?>
-                        <tr>
-                            <td><?= $valueBuku->nama?></td>
-                            <td><?= $valueBuku->alamat?></td>
-                            <td><?= $valueBuku->email?></td>
-                        </tr>
-                    <?php endforeach;?>
-                <?php endif;?>
-                </tbody>
-
-            </table>
-        </div><!---data buku-->
+        <div class="cetak-laporan" >
+            <ul>
+                <li><a href="<?= base_url()."admin/dashboard/laporanbuku"?>">Cetak Data Buku</a></li>
+                <li><a href="<?= base_url()."admin/dashboard/laporanlistuser"?>">Cetak Data User</a></li>
+                <li><a href="<?= base_url()."admin/dashboard/laporanpeminjam"?>">Cetak Data Peminjam</a></li>
+            </ul>
+        </div>
 
     </div><!---core-->
 

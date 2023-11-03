@@ -7,6 +7,21 @@ use App\Libraries\GeneratePDF;
 
 class LaporanAdmin extends Dashboard
 {
+    public function cetakLaporanView(){
+        return view('dashboard/admincetaklaporan');
+    }
+
+    public function laporanDataBuku(){
+        // membuat data untuk diisi didalam view pdf
+        $dataParser["bukuData"]=
+            [
+                "buku"=>$this->bukuModel->getAllDataBuku(),
+                "kategori"=>$this->kategoriBukuModel->getAllNamaKategori()
+            ];
+        $generatePdf = new GeneratePDF();
+        $generatePdf->createPdf($dataParser,'laporanuser',"template/PdfLaporanBuku");
+    }
+
     public function laporanListUser(){
         // membuat data untuk diisi didalam view pdf
         $dataParser["userData"]=
@@ -32,4 +47,6 @@ class LaporanAdmin extends Dashboard
         $generatePdf = new GeneratePDF();
         $generatePdf->createPdf($dataParser,'laporanuser',"template/PdfLaporanPeminjam");
     }
+
+
 }
